@@ -1,6 +1,12 @@
 <!-- <h1>Home Page</h1> -->
 	<div class="title" align="center">Bloc Chat</div>
+	<form ng-submit="createRoom(newroom)">
+		<input type="text" ng-model="newroom.name">
+		<button>Create Room</button>
+	</form>
+
 	<ul>
 		<li ng-repeat="room in rooms">{{ room.name }}
+			<button ng-click="removeRoom(room)">x</button>
 		</li>
 	</ul>

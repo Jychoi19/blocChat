@@ -6,7 +6,13 @@ app.factory('Chatroom', ['$firebaseArray', function($firebaseArray) {
 	var rooms = $firebaseArray(firebaseRef.child('rooms'));
 
 	return {
-			all: rooms
+		all: rooms,
+		create: function (room) {
+			return rooms.$add(room);
+		},
+		remove: function (room) {
+			return rooms.$remove(room);
+		}
 	}
 
 }]);
