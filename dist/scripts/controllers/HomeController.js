@@ -1,15 +1,16 @@
 var app = angular.module("blocChat");
 
 app.controller("HomeController", ['$scope', '$firebaseObject', 'Chatroom', function($scope, $firebaseObject, Chatroom) {
-	var ref = new Firebase("https://blocchatapp.firebaseio.com");
-	$scope.data = $firebaseObject(ref);
+	// var ref = new Firebase("https://blocchatapp.firebaseio.com");
+	// $scope.data = $firebaseObject(ref);
 	$scope.rooms = Chatroom.all;
 
 	$scope.createRoom = function (room) {
 		Chatroom.create(room);
+		$('#myModal').modal('hide');
+		$scope.newroom.name = null;
 	}
 	$scope.removeRoom = function (room) {
-		Chatroom.remove(room)
+		Chatroom.remove(room);
 	}
-
 }]);

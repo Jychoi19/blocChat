@@ -1,4 +1,19 @@
-/*.title {
-	font-size: 20px;
-	color: white;
-}*/
+.title {
+	display: inline;
+}
+.roomList {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.roomList li {
+	margin: 10px;
+}
+.roomList li .glyphicon-remove {
+	cursor:pointer; margin-left:10px; color:#888;
+}
+.sideBar {
+	background: #EEE;
+	padding: 15px;
+
+}
