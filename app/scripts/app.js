@@ -1,4 +1,4 @@
-var app = angular.module("blocChat", ['ui.router', 'firebase']);
+var app = angular.module("blocChat", ['ui.router', 'firebase', 'ui.bootstrap']);
 
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     $locationProvider.html5Mode({
