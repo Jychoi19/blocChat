@@ -1,4 +1,4 @@
-var app = angular.module("blocChat", ['ui.router', 'firebase', 'ui.bootstrap']);
+var app = angular.module("blocChat", ['ui.router', 'firebase', 'ui.bootstrap', 'ngCookies']);
 
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     $locationProvider.html5Mode({
@@ -13,3 +13,15 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
          	templateUrl: '/templates/home.html'
      	})
  });
+app.run(['$cookies', '$uibModal', function($cookies, $uibModal) {
+    if (!$cookies.blocChatCurrentUser || $cookies.blocChatCurrentUser === '') {
+        $uibModal.open({
+            keyboard: false,
+            backdrop: 'static',
+            animation: true,
+            templateUrl: 'templates/createUserName.html',
+            controller: 'UserNameController',
+            size: 'sm'
+        })
+    }
+}]);
