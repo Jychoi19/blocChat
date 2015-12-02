@@ -2,7 +2,8 @@ var app = angular.module("blocChat");
 
 app.controller("HomeController", ['$scope', 'Chatroom', '$uibModal', function($scope, Chatroom, $uibModal) {
 	$scope.rooms = Chatroom.all;
-	// $scope.currentRoom = {};
+	$scope.currentRoom = {};
+	$scope.messages = [];
 
    	$scope.openCreateRoomModal = function(){
       	$uibModal.open({
@@ -14,5 +15,9 @@ app.controller("HomeController", ['$scope', 'Chatroom', '$uibModal', function($s
     };
 	$scope.removeRoom = function (room) {
 		Chatroom.remove(room);
+	};
+	$scope.setCurrentRoom = function(room) {
+		$scope.currentRoom = room;
+		$scope.messages = Chatroom.messages($scope.currentRoom.$id);
 	};
 }]);

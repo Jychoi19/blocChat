@@ -12,6 +12,9 @@ app.factory('Chatroom', ['$firebaseArray', function($firebaseArray) {
 		},
 		remove: function (room) {
 			return rooms.$remove(room);
+		},
+		messages: function (roomId) {
+			return $firebaseArray(firebaseRef.child('messages').orderByChild('roomId').equalTo(roomId));
 		}
 	}
 }]);
