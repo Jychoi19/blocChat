@@ -1,18 +1,19 @@
 <section class="sideBar">
-  <h2 class="title">Bloc Chat</h2>
-    <button type="button" class="btn btn-primary btn-sm" ng-click="openCreateRoomModal()">New Room</button>
-  <uib-tabset vertical="true" type="pills">
-    <uib-tab heading="{{ room.name }}" ng-repeat="room in rooms" ng-click="setCurrentRoom(room)"></uib-tab>
-  </uib-tabset>  
+	<h2 class="title">Bloc Chat</h2>
+		<button type="button" class="btn btn-primary btn-sm" ng-click="openCreateRoomModal()">New Room</button>
+	<uib-tabset vertical="true" type="pills">
+		<uib-tab heading="{{ room.name }}" ng-repeat="room in rooms" ng-click="setCurrentRoom(room)"></uib-tab>
+	</uib-tabset>
 </section>
 
-<section class="currentRoom container" ng-show="currentRoom">
-  <h3>{{ currentRoom.name }}</h3>
-  <table class="table table-striped">
-    <tr ng-repeat="message in messages">
-      <td class=".col-md-1">{{ message.userName }}</td>
-      <td class=".col-md-1">{{ message.sentAt }}</td>
-      <td class=".col-md-10">{{ message.content }}</td>
-    </tr>
-  </table>
+<section class="currentRoom" ng-show="currentRoom">
+	<h3>{{ currentRoom.name }}</h3>
+	<h3>{{ currentUserName }}</h3>
+	<table class="table table-striped">
+		<tr ng-repeat="message in messages">
+	  		<td>{{ message.userName }}</td>
+	  		<td>{{ message.sentAt }}</td>
+	  		<td>{{ message.content }}</td>
+		</tr>
+	</table>
 </section>
