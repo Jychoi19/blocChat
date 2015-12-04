@@ -5,5 +5,4 @@ app.controller("UserNameController", ['$scope', '$cookies', '$uibModalInstance',
 		$cookies.put('blocChatCurrentUser', name);
 		$uibModalInstance.close();
 	}
-	$scope.currentUserName = $cookies.blocChatCurrentUser;
 }]);
