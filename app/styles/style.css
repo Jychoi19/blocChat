@@ -1,41 +1,51 @@
 .title {
-	display: inline;
+   display: inline;
 }
 /*.roomList {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
 }
 .roomList li {
-	margin: 10px;
+   margin: 10px;
 }
 .roomList li .glyphicon-remove {
-	cursor:pointer; margin-left:10px; color:#888;
+   cursor:pointer; margin-left:10px; color:#888;
 }*/
 .sideBar {
-	background: #EEE;
-	padding: 20px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 280px;
+   background: #EEE;
+   padding: 20px;
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   width: 280px;
 }
 .btn-primary {
-	margin-bottom: 11px;
-	margin-left: 15px;
+   margin-bottom: 11px;
+   margin-left: 15px;
 }
 .currentRoom {
-	position: absolute;
-	left: 300px;
+   position: absolute;
+   left: 300px;
+}
+.sendMessage {
+   position: absolute;
+   left: 300px;
+   bottom: 10px;
+}
+.removeBtn {
+   position: fixed;
+   top: 20px;
+   right: 20px;
 }
 /*.userName {
-	position: relative;
+   position: relative;
 }*/
 /*.timestamp {
-	float:right;
-	right: 0px;
+   float:right;
+   right: 0px;
 }*/
 /*.textMessage {
-	position: absolute;
+   position: absolute;
 }*/

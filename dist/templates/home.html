@@ -1,19 +1,27 @@
 <section class="sideBar">
-	<h2 class="title">Bloc Chat</h2>
-		<button type="button" class="btn btn-primary btn-sm" ng-click="openCreateRoomModal()">New Room</button>
-	<uib-tabset vertical="true" type="pills">
-		<uib-tab heading="{{ room.name }}" ng-repeat="room in rooms" ng-click="setCurrentRoom(room)"></uib-tab>
-	</uib-tabset>
+   <h2 class="title">Bloc Chat</h2>
+      <button type="button" class="btn btn-primary btn-sm" ng-click="openCreateRoomModal()">New Room</button>
+   <uib-tabset vertical="true" type="pills">
+      <uib-tab heading="{{ room.name }}" ng-repeat="room in rooms" ng-click="setCurrentRoom(room)"></uib-tab>
+   </uib-tabset>
 </section>
 
 <section class="currentRoom" ng-show="currentRoom">
-	<h3>{{ currentRoom.name }}</h3>
-	<h3>{{ currentUserName }}</h3>
-	<table class="table table-striped">
-		<tr ng-repeat="message in messages">
-	  		<td>{{ message.userName }}</td>
-	  		<td>{{ message.sentAt }}</td>
-	  		<td>{{ message.content }}</td>
-		</tr>
-	</table>
+   <h3>{{ currentRoom.name }}</h3>
+   <table class="table table-striped">
+      <tr ng-repeat="message in messages">
+         <td>{{ message.userName }}</td>
+         <td>{{ message.sentAt | filterTimeCode }}</td>
+         <td>{{ message.content }}</td>
+      </tr>
+   </table>
+   <button class="btn btn-danger removeBtn" ng-click="removeRoom(currentRoom)">Delete Room</button>
+</section>
+
+<section class="sendMessage">
+   <!-- send messages tab -->
+   <form ng-submit="sendMessage(message)">
+      <input type="text" ng-model="message" placeholder="Enter Text">
+      <button class="btn btn-info">Send</button>
+   </form>
 </section>
