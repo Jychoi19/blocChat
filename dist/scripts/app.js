@@ -9,18 +9,18 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
    $stateProvider
       .state('home', {
          url: '/home',
-         controller: 'HomeController',
+         controller: 'ChatroomController',
          templateUrl: '/templates/home.html'
       })
 });
 app.run(['$cookies', '$uibModal', function($cookies, $uibModal) {
-   if (!$cookies.blocChatCurrentUser || $cookies.blocChatCurrentUser === '') {
+   if (!$cookies.get('blocChatCurrentUser') || $cookies.get('blocChatCurrentUser') === '') {
       $uibModal.open({
          keyboard: false,
          backdrop: 'static',
          animation: true,
          templateUrl: 'templates/createUserName.html',
-         controller: 'UserNameController',
+         controller: 'AuthenticationController',
          size: 'sm'
       })
    }

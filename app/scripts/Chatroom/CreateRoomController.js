@@ -4,6 +4,7 @@ app.controller("CreateRoomController", ['$scope', 'Chatroom', '$uibModalInstance
    $scope.createRoom = function (room) {
       if (room !== undefined) {
          Chatroom.create(room);
+         $scope.currentRoom = room;
       }
       else { return null; };
       $uibModalInstance.close();
