@@ -15,8 +15,8 @@
    </div>
    <table class="text-messages table">
       <tr ng-repeat="message in messages">
-         <td>{{ message.userName }}</td>
-         <td class="chat-timestamp">{{ message.sentAt | filterTimeCode | date:"h:mma" }}</td>
+         <td><div class="chat-username">{{ message.userName }}</div></td>
+         <td><div class="chat-timestamp">{{ message.sentAt | date:"h:mma" }}</div></td>
          <td class="chat-message">
             <div class="bubble">{{ message.content }}</div>
          </td>
