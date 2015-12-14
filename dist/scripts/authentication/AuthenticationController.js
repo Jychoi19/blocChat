@@ -1,6 +1,6 @@
 var app = angular.module("blocChat");
 
-app.controller("AuthenticationController", ['$scope', '$cookies', '$uibModalInstance', function($scope, $cookies, $uibModalInstance) {
+app.controller("AuthenticationController", ['$scope', '$cookies', '$uibModalInstance', '$firebase', function($scope, $cookies, $uibModalInstance, $firebase) {
    $scope.setCurrentUser = function(username) {
       if (username === undefined || username.trim() === "") {
          return false;

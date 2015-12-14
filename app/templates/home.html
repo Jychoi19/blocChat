@@ -1,26 +1,32 @@
 <section class="sideBar">
-   <h2 class="title">Bloc Chat</h2>
-      <button type="button" class="btn btn-primary btn-sm" ng-click="openCreateRoomModal()">New Room</button>
+   <div class="sideBarT">
+      <h2 class="title">Bloc Chat</h2>
+      <button type="button" class="btn btn-primary newButton" ng-click="openCreateRoomModal()">New</button>
+   </div>
    <uib-tabset vertical="true" type="pills">
       <uib-tab heading="{{ room.name }}" active="isActive(room)" ng-repeat="room in rooms" ng-click="setCurrentRoom(room)"></uib-tab>
    </uib-tabset>
 </section>
 
 <section class="currentRoom" ng-show="currentRoom">
-   <h3>{{ currentRoom.name }}</h3>
-   <table class="table table-striped">
+   <div class="title-bar">
+      <h3 class="roomTitle">{{ currentRoom.name }}</h3>
+      <button class="btn btn-danger removeBtn" ng-click="removeRoom(currentRoom)">Delete</button>   
+   </div>
+   <table class="text-messages table">
       <tr ng-repeat="message in messages">
          <td>{{ message.userName }}</td>
-         <td>{{ message.sentAt | filterTimeCode }}</td>
-         <td>{{ message.content }}</td>
+         <td class="chat-timestamp">{{ message.sentAt | filterTimeCode | date:"h:mma" }}</td>
+         <td class="chat-message">
+            <div class="bubble">{{ message.content }}</div>
+         </td>
       </tr>
    </table>
-   <button class="btn btn-danger removeBtn" ng-click="removeRoom(currentRoom)">Delete Room</button>
+   <div class="sendMessage">
+      <form class="form-inline" ng-submit="sendMessage(message)"> <!--form-inline -->
+         <input class="enterText form-control" type="text" ng-model="message" placeholder="Enter Text"><!--form-control-->
+         <button type="submit" class="btn btn-info">Send</button>
+      </form>
+   </div>
 </section>
 
-<section class="sendMessage">
-   <form ng-submit="sendMessage(message)">
-      <input type="text" ng-model="message" placeholder="Enter Text">
-      <button class="btn btn-info">Send</button>
-   </form>
-</section>

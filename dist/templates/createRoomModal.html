@@ -4,9 +4,9 @@
       <h4 class="modal-title">Room Name</h4>
       </div>
    <div class="modal-body">
-      <form ng-submit="createRoom(newroom)">
-         <input type="text" ng-model="newroom.name" placeholder="Enter Room Name">
-         <button class="btn btn-info">Create Room</button>
+      <form ng-submit="createRoom(newroom)" class="form-inline">
+         <input class="form-control" type="text" ng-model="newroom.name" placeholder="Enter Room Name">
+         <button class="btn btn-info">Create</button>
       </form>
    </div>   
    <div class="modal-footer">
