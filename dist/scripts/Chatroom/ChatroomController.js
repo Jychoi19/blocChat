@@ -1,6 +1,7 @@
 var app = angular.module("blocChat");
 
-app.controller("ChatroomController", ['$scope', 'Chatroom', '$uibModal', 'Message', function($scope, Chatroom, $uibModal, Message) {
+app.controller("ChatroomController", ['$scope', 'Chatroom', '$uibModal', 'Message', '$location', '$anchorScroll', 
+   function($scope, Chatroom, $uibModal, Message, $location, $anchorScroll) {
    $scope.rooms = Chatroom.all;
    $scope.currentRoom = {};
    $scope.messages = [];
