@@ -13,15 +13,17 @@
       <h3 class="roomTitle">{{ currentRoom.name }}</h3>
       <button class="btn btn-danger removeBtn" ng-click="removeRoom(currentRoom)">Delete</button>   
    </div>
-   <table class="text-messages table">
-      <tr ng-repeat="message in messages" scroll-to-bottom="messages">
-         <td><div class="chat-username">{{ message.userName }}</div></td>
-         <td><div class="chat-timestamp">{{ message.sentAt | date:"h:mma" }}</div></td>
-         <td class="chat-message">
-            <div class="bubble">{{ message.content }}</div>
-         </td>
-      </tr>
-   </table>
+   <div class="text-messages">
+     <table class="table">
+        <tr ng-repeat="message in messages" scroll-to-bottom="messages">
+           <td><div class="chat-username">{{ message.userName }}</div></td>
+           <td><div class="chat-timestamp">{{ message.sentAt | date:"h:mma" }}</div></td>
+           <td class="chat-message">
+              <div class="bubble">{{ message.content }}</div>
+           </td>
+        </tr>
+     </table>
+   </div>
    <div class="sendMessage">
       <form class="form-inline" ng-submit="sendMessage(message); gotoBottom()"> <!--form-inline -->
          <input class="enterText form-control" type="text" ng-model="message" placeholder="Enter Text"><!--form-control-->
