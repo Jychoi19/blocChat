@@ -21,10 +21,16 @@ app.controller("ChatroomController", ['$scope', 'Chatroom', '$uibModal', 'Messag
    $scope.setCurrentRoom = function(room) {
       $scope.currentRoom = room;
       $scope.messages = Chatroom.messages($scope.currentRoom.$id);
+      setTimeout(function(){
+        document.querySelector(".text-messages").scrollTop = document.querySelector('.text-messages').scrollHeight;
+      }, 100);
    };
    $scope.sendMessage = function(message){
       Message.send(message, $scope.currentRoom.$id);
       $scope.message = null;
+      setTimeout(function(){
+        document.querySelector(".text-messages").scrollTop = document.querySelector('.text-messages').scrollHeight;
+      }, 100);
    }
    $scope.isActive = function(room) {
       return $scope.currentRoom === room;
