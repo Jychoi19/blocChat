@@ -3,7 +3,7 @@
       <h2 class="title">Bloc Chat</h2>
       <button type="button" class="btn btn-primary newButton" ng-click="openCreateRoomModal()">New</button>
    </div>
-   <uib-tabset vertical="true" type="pills">
+   <uib-tabset vertical="true" type="pills"> 
       <uib-tab heading="{{ room.name }}" ng-repeat="room in rooms" ng-click="setCurrentRoom(room)"></uib-tab>
    </uib-tabset>
 </section>

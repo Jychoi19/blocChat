@@ -17,6 +17,11 @@
    margin-bottom: 11px;
    margin-left: 15px;
 }
+.removeBtn {
+   position: fixed;
+   top: 20px;
+   right: 20px;
+}
 .currentRoom {
    display: flex;
    flex-direction: column;
@@ -37,6 +42,7 @@
 }
 .sendMessage {
    padding: 11px;
+   bottom: 0;
    background-color: #666;
    width: 100%;
    min-height:60px;

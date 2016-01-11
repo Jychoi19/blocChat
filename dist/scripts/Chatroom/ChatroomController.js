@@ -15,8 +15,8 @@ app.controller("ChatroomController", ['$scope', 'Chatroom', '$uibModal', 'Messag
       })
    };
    $scope.removeRoom = function (room) {
-      Chatroom.remove(room);
       $scope.setCurrentRoom($scope.rooms[0]);
+      Chatroom.remove(room);
    };
    $scope.setCurrentRoom = function(room) {
       $scope.currentRoom = room;
