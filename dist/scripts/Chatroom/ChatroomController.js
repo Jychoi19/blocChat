@@ -1,11 +1,22 @@
 var app = angular.module("blocChat");
 
-app.controller("ChatroomController", ['$scope', 'Chatroom', '$uibModal', 'Message', '$location', '$anchorScroll',
-   function($scope, Chatroom, $uibModal, Message, $location, $anchorScroll) {
+app.controller("ChatroomController", ['$scope', 'Chatroom', '$uibModal', 'Message', '$location', '$anchorScroll', '$rootScope',
+   function($scope, Chatroom, $uibModal, Message, $location, $anchorScroll, $rootScope) {
    $scope.rooms = Chatroom.all;
    $scope.currentRoom = {};
    $scope.messages = [];
 
+   $rootScope.$on('SET_CURRENT_ROOM', function(event, ref){
+     var room = $scope.rooms[$scope.rooms.$indexFor(ref)]
+     $scope.setCurrentRoom(room);
+   });
+
+   $scope.$watchCollection("messages", function(){
+      setTimeout(function(){
+         document.querySelector(".text-messages").scrollTop = document.querySelector('.text-messages').scrollHeight;
+      }, 100);
+   });
+   
    $scope.openCreateRoomModal = function(){
       $uibModal.open({
          animation: true,
@@ -15,8 +26,9 @@ app.controller("ChatroomController", ['$scope', 'Chatroom', '$uibModal', 'Messag
       })
    };
    $scope.removeRoom = function (room) {
-      $scope.setCurrentRoom($scope.rooms[0]);
-      Chatroom.remove(room);
+      Chatroom.remove(room).then(function(){
+         if ($scope.rooms.length) $scope.setCurrentRoom($scope.rooms[$scope.rooms.length-1]);  
+      });    
    };
    $scope.setCurrentRoom = function(room) {
       $scope.currentRoom = room;
@@ -28,9 +40,6 @@ app.controller("ChatroomController", ['$scope', 'Chatroom', '$uibModal', 'Messag
    $scope.sendMessage = function(message){
       Message.send(message, $scope.currentRoom.$id);
       $scope.message = null;
-      setTimeout(function(){
-        document.querySelector(".text-messages").scrollTop = document.querySelector('.text-messages').scrollHeight;
-      }, 100);
    }
    $scope.isActive = function(room) {
       return $scope.currentRoom === room;

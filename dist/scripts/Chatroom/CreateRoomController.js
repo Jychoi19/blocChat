@@ -1,10 +1,12 @@
 var app = angular.module("blocChat");
 
-app.controller("CreateRoomController", ['$scope', 'Chatroom', '$uibModalInstance', function($scope, Chatroom, $uibModalInstance) {
-   $scope.createRoom = function (room) {
-      if (room !== undefined) {
-         Chatroom.create(room);
-         $scope.currentRoom = room;
+app.controller("CreateRoomController", ['$scope', 'Chatroom', '$uibModalInstance', '$rootScope', 
+   function($scope, Chatroom, $uibModalInstance, $rootScope) {
+   $scope.createRoom = function (roomName) {
+      if (roomName !== undefined) {
+         Chatroom.create(roomName).then(function(ref){
+            $rootScope.$emit("SET_CURRENT_ROOM", ref.key());
+         })   
       }
       else { return null; };
       $uibModalInstance.close();
