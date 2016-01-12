@@ -4,4 +4,4 @@ BlocChat is a chat application that was made using Angularjs, Firebase, and Boot
 
 ## Configuration
 
-deployement in process.
+http://blocchatapp.herokuapp.com/
