@@ -25,23 +25,38 @@ app.controller("ChatroomController", ['$scope', 'Chatroom', '$uibModal', 'Messag
          size: 'sm'
       })
    };
-   $scope.removeRoom = function (room) {
-      Chatroom.remove(room).then(function(){
-         if ($scope.rooms.length) $scope.setCurrentRoom($scope.rooms[$scope.rooms.length-1]);  
-      });    
+
+   $scope.openDeleteRoomModal = function(room){
+      if (!angular.equals({}, room)) {
+         $uibModal.open({
+            animation: true,
+            templateUrl: 'templates/deleteRoomModal.html',
+            controller: 'DeleteRoomController',
+            size: 'sm',
+            resolve: {
+               roomId: function() {
+                  return room;
+               }
+            }
+         })
+      }
    };
-   $scope.setCurrentRoom = function(room) {
+
+   $rootScope.setCurrentRoom = function(room) {
       $scope.currentRoom = room;
       $scope.messages = Chatroom.messages($scope.currentRoom.$id);
       setTimeout(function(){
         document.querySelector(".text-messages").scrollTop = document.querySelector('.text-messages').scrollHeight;
       }, 100);
    };
+
    $scope.sendMessage = function(message){
       Message.send(message, $scope.currentRoom.$id);
       $scope.message = null;
    }
+
    $scope.isActive = function(room) {
       return $scope.currentRoom === room;
    }
+
 }]);

@@ -11,7 +11,7 @@
 <section class="currentRoom" ng-show="currentRoom">
    <div class="title-bar">
       <h3 class="roomTitle">{{ currentRoom.name }}</h3>
-      <button class="btn btn-danger removeBtn" ng-click="removeRoom(currentRoom)">Delete</button>   
+      <button class="btn btn-danger removeBtn" ng-click="openDeleteRoomModal(currentRoom)">Delete</button>   
    </div>
    <div class="text-messages">
      <table class="table">
@@ -31,3 +31,6 @@
       </form>
    </div>
 </section>
+
+<!-- 
+ng-click="removeRoom(currentRoom)"  -->
